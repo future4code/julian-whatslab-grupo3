@@ -38,8 +38,8 @@ const MensagemDestinatario = styled.p`
     word-break: break-all;
     padding: 10px;
     border-radius: 5px;
-    color: #333;
-    background-color: aliceblue;
+    color: whitesmoke;
+    background-color: darkred;
 `
 
 const InputNome = styled.input`
