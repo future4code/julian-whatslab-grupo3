@@ -71,7 +71,7 @@ let uniqueKey = 0;
 class InputMensagem extends React.Component{
     state = {
         mensagens: [
-
+            
         ],
 
         valorInputNome: "",
@@ -125,6 +125,7 @@ class InputMensagem extends React.Component{
 
     };
 
+<<<<<<< HEAD
     removeMensagem = (e) =>{
 
         const key = e.target.getAttribute("data-key");
@@ -135,6 +136,24 @@ class InputMensagem extends React.Component{
         })})
     }
 
+=======
+    //onkeydown ainda não funciona
+    onKeyDownEnter = (event) => {
+        if (event.key === "Enter") {
+            this.adicionaMensagem();
+        }
+    }
+
+    //doubleclick ainda não funciona
+    removeMensagem = (mensagemIndex) => {
+        if (window.confirm("Tem certeza que deseja deletar essa mensagem?")) {
+            const mensagemRemovida = this.state.mensagens;
+
+            mensagemRemovida.splice(mensagemIndex, 1);
+        }
+
+        this.setState({ mensagens: mensagemRemovida });
+>>>>>>> cb523b22f648c6eedbfd2b887c80431470aeb5f4
     }
 
     render(){
@@ -156,9 +175,15 @@ class InputMensagem extends React.Component{
                 {listaDeMensagens}
                 </Mensagem>
                 <Formulario>
+<<<<<<< HEAD
                     <InputNome value={this.state.valorInputNome} placeholder="Usuário" onChange={this.onChangeInputNome} />
                     <InputTexto value={this.state.valorInputTexto} placeholder="Mensagem" onChange={this.onChangeInputTexto} onKeyPress={this.onKeyEnter} />
                     <BotaoEnviar onClick={this.adicionaMensagem}>Enviar</BotaoEnviar>
+=======
+                    <input value={this.state.valorInputNome} placeholder="Usuário" onChange={this.onChangeInputNome} />
+                    <input value={this.state.valorInputTexto} placeholder="Mensagem" onChange={this.onChangeInputTexto} />
+                    <button onClick={this.adicionaMensagem} onKeyDown={this.onKeyDownEnter} onDoubleClick={this.removeMensagem}>Enviar</button>
+>>>>>>> cb523b22f648c6eedbfd2b887c80431470aeb5f4
                 </Formulario>
                 </div>
         )
