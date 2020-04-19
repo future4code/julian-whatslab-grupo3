@@ -22,9 +22,7 @@ const Mensagem = styled.div`
 
 class InputMensagem extends React.Component{
     state = {
-        mensagens: [
-
-        ],
+        mensagens: [],
 
         valorInputNome: "",
 
@@ -58,6 +56,24 @@ class InputMensagem extends React.Component{
 
     };
 
+    //onkeydown ainda não funciona
+    onKeyDownEnter = (event) => {
+        if (event.key === "Enter") {
+            this.adicionaMensagem();
+        }
+    }
+
+    //doubleclick ainda não funciona
+    removeMensagem = (mensagemIndex) => {
+        if (window.confirm("Tem certeza que deseja deletar essa mensagem?")) {
+            const mensagemRemovida = this.state.mensagens;
+
+            mensagemRemovida.splice(mensagemIndex, 1);
+        }
+
+        this.setState({ mensagens: mensagemRemovida });
+    }
+
     render(){
         const listaDeMensagens = this.state.mensagens.map((mensagem) => {
             return(
@@ -73,7 +89,7 @@ class InputMensagem extends React.Component{
                 <Formulario>
                     <input value={this.state.valorInputNome} placeholder="Usuário" onChange={this.onChangeInputNome} />
                     <input value={this.state.valorInputTexto} placeholder="Mensagem" onChange={this.onChangeInputTexto} />
-                    <button onClick={this.adicionaMensagem}>Enviar</button>
+                    <button onClick={this.adicionaMensagem} onKeyDown={this.onKeyDownEnter} onDoubleClick={this.removeMensagem}>Enviar</button>
                 </Formulario>
                 </div>
         )
