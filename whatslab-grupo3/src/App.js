@@ -10,7 +10,13 @@ const Container = styled.div`
     
     margin: 0 auto;
     border: 1px solid black;
-`
+
+    background: linear-gradient(
+    to left,
+    rgba(7,27,82,1) 0%,
+    rgba(0,128,120,1)100%
+  );
+  `
 
 function App() {
   return (
